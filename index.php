@@ -84,9 +84,9 @@ $task_list = [
                 <h2 class="content__side-heading">Проекты</h2>
 
                 <nav class="main-navigation">
-                    <?php foreach ($project_list as $project_value): ?>
+                    <?php foreach ($project_list as $projectName): ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?php echo $project_value; ?></a>
+                            <a class="main-navigation__list-item-link" href="#"><?= $projectName; ?></a>
                             <span class="main-navigation__list-item-count">0</span>
                         </li>
 					<?php endforeach; ?>
@@ -116,7 +116,7 @@ $task_list = [
 
                     <label class="checkbox">
                         <!--добавить сюда аттрибут "checked", если переменная $show_complete_tasks равна единице-->
-                        <input class="checkbox__input visually-hidden show_completed" type="checkbox" <?php if ($show_complete_tasks == 1) echo 'checked' ?>>
+                        <input class="checkbox__input visually-hidden show_completed" type="checkbox" <?= ($show_complete_tasks == 1) ? 'checked' : '' ?>>
                         <span class="checkbox__text">Показывать выполненные</span>
                     </label>
                 </div>
@@ -137,16 +137,16 @@ $task_list = [
                         <td class="task__date"></td>
                     </tr>
 					<?php foreach ($task_list as $task_key => $task_item): ?>
-					<tr class="tasks__item task <?php if ($task_item['performed'] == 'Да') {echo 'task--completed';}?>">
+					<tr class="tasks__item task <?= ($task_item['performed'] == 'Да') ? 'task--completed' : '' ?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?php echo $task_item['subject']; ?></span>
+                                <span class="checkbox__text"><?= $task_item['subject']; ?></span>
                             </label>
                         </td>
 
                         <td class="task__date">
-                            <?php echo $task_item['date_complite']; ?>
+                            <?= $task_item['date_complite']; ?>
                         </td>
 
                         <td class="task__date"></td>
