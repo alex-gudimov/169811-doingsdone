@@ -84,6 +84,7 @@ $task_list = [
                 <h2 class="content__side-heading">Проекты</h2>
 
                 <nav class="main-navigation">
+					<ul class="main-navigation__list">
                     <?php foreach ($project_list as $projectName): ?>
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#"><?= $projectName; ?></a>
