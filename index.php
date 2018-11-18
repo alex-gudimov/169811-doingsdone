@@ -40,6 +40,17 @@ $task_list = [
 		'performed' => 'Нет',
 	]
 ];
+
+function taskCount ($taskList, $project) {
+	$taskCount = 0;
+	foreach ($taskList as $task_key => $task_item) {
+		if ($task_item['catrgory'] == $project) {
+			$taskCount = $taskCount + 1;
+		}
+	}
+	return $taskCount;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -88,7 +99,7 @@ $task_list = [
                     <?php foreach ($project_list as $projectName): ?>
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#"><?= $projectName; ?></a>
-                            <span class="main-navigation__list-item-count">0</span>
+                            <span class="main-navigation__list-item-count"><?= taskCount ($task_list, $projectName); ?></span>
                         </li>
 					<?php endforeach; ?>
                     </ul>
