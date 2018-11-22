@@ -17,4 +17,14 @@ function include_template($name, $data) {
     return $result;
 }
 
+function taskCount ($taskList, $project) {
+	$taskCount = 0;
+	foreach ($taskList as $task_key => $task_item) {
+		if ($task_item['catrgory'] == $project) {
+			$taskCount = $taskCount + 1;
+		}
+	}
+	return $taskCount;
+}
+
 ?>

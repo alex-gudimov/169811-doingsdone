@@ -46,7 +46,7 @@
                         </td>
 
                         <td class="task__date">
-                            <?= $task_item['date_complite']; ?>
+                            <?= htmlspecialchars($task_item['date_complite']); ?>
                         </td>
 
                         <td class="task__date"></td>
