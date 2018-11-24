@@ -37,7 +37,21 @@
                         <td class="task__date"></td>
                     </tr>
 					<?php foreach ($task_list as $task_key => $task_item): ?>
-					<tr class="tasks__item task <?= ($task_item['performed'] == 'Да') ? 'task--completed' : '' ?>">
+					<tr class="tasks__item task <?= ($task_item['performed'] == 'Да') ? 'task--completed' : '';
+
+					date_default_timezone_set("Europe/Moscow");					
+					$dt_end = strtotime($task_item['date_complite']);
+					$dt_now = time();
+					$dt_diff = floor(($dt_end - $dt_now)/3600);
+					
+					
+					if ($task_item['performed'] == 'Да' || $task_item['date_complite'] == 'Нет') {
+						echo '';
+					} elseif ($dt_diff <= 24) {
+						echo 'task--important';
+					}
+
+					?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">

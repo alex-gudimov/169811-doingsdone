@@ -10,7 +10,7 @@ $task_list = [
 	],	
 	[
 		'subject' => 'Выполнить тестовое задание',
-		'date_complite' => '25.12.2018',
+		'date_complite' => '25.11.2018',
 		'catrgory' => 'Работа',
 		'performed' => 'Нет',
 	],
