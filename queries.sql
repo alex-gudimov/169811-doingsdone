@@ -1,6 +1,11 @@
 
 USE doingsdone;
 
+-- добавить пользователей в БД
+	
+INSERT INTO users SET email = 'user1@mail.bu', user_name = 'user1', password = 'secret1';
+INSERT INTO users SET email = 'user2@mail.bu', user_name = 'user2', password = 'secret2';
+
 -- добавить в БД проекты для пользователя user1
 
 INSERT INTO projects (project_name, user_id) VALUES ('Входящие_usr1', 1), ('Учеба_usr1', 1), ('Работа_usr1', 1), ('Домашние дела_usr1', 1), ('Авто_usr1', 1);
@@ -8,11 +13,6 @@ INSERT INTO projects (project_name, user_id) VALUES ('Входящие_usr1', 1)
 -- добавить в БД проекты для пользователя user2
 
 INSERT INTO projects (project_name, user_id) VALUES ('Входящие_usr2', 2), ('Учеба_usr2', 2), ('Работа_usr2', 2), ('Домашние дела_usr2', 2), ('Авто_usr2', 2);
-
--- добавить пользователей в БД
-	
-INSERT INTO users SET email = 'user1@mail.bu', user_name = 'user1', password = 'secret1';
-INSERT INTO users SET email = 'user2@mail.bu', user_name = 'user2', password = 'secret2';
 
 -- добавить в БД задачи для пользователя user1
 
@@ -42,7 +42,7 @@ SELECT * FROM tasks WHERE project_id = 3 AND user_id =1;
 
 -- пометить задачу как выполненную
 
-UPDATE tasks SET status = 1 WHERE id = 2;
+UPDATE tasks SET status = 1, completed_at = current_timestamp  WHERE id = 2;
 
 -- получить все задачи для завтрашнего дня 
 
