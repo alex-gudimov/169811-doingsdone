@@ -26,13 +26,13 @@ CREATE TABLE `users` (
 CREATE TABLE `tasks` (
 	`id`					int(11) unsigned NOT NULL AUTO_INCREMENT,
 	`created_at`		timestamp default current_timestamp NOT NULL,
-	`completed_at`	timestamp NOT NULL,
+	`completed_at`	timestamp default NULL,
 	`status`			tinyint(2) default 0,
 	`project_id`		int(11),
 	`user_id`			int(11),
 	`task_name`		char(255) NOT NULL,
 	`file_add` 		char(255),
-	`deadline`		timestamp,
+	`deadline`		timestamp default NULL,
 	PRIMARY KEY (`id`)
 );
 

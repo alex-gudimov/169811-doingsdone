@@ -46,7 +46,7 @@ UPDATE tasks SET status = 1, completed_at = current_timestamp  WHERE id = 2;
 
 -- получить все задачи для завтрашнего дня 
 
-INSERT INTO tasks SET status = 0, project_id = 3, task_name = 'Тестовая задача на завтра', deadline = '2018-11-29';
+-- INSERT INTO tasks SET status = 0, project_id = 3, task_name = 'Тестовая задача на завтра', deadline = '2018-11-29';
 
 SELECT * FROM tasks WHERE deadline = ADDDATE(CURDATE(), INTERVAL +1 DAY);
 

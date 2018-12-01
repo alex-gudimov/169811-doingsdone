@@ -36,16 +36,16 @@
 
                         <td class="task__date"></td>
                     </tr>
-					<?php foreach ($task_list as $task_key => $task_item): ?>
-					<tr class="tasks__item task <?= ($task_item['performed'] == 'Да') ? 'task--completed' : '';
+					<?php foreach (taskMapping ($connection)  as $task_item): ?>
+					<tr class="tasks__item task <?= ($task_item['status'] == 1) ? 'task--completed' : '';
 
 					date_default_timezone_set("Europe/Moscow");					
-					$dt_end = strtotime($task_item['date_complite']);
+					$dt_end = strtotime($task_item['deadline']);
 					$dt_now = time();
 					$dt_diff = floor(($dt_end - $dt_now)/3600);
 					
 					
-					if ($task_item['performed'] == 'Да' || $task_item['date_complite'] == 'Нет') {
+					if ($task_item['status'] == 1 || $task_item['deadline'] == null) {
 						echo '';
 					} elseif ($dt_diff <= 24) {
 						echo 'task--important';
@@ -55,12 +55,15 @@
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?= htmlspecialchars($task_item['subject']); ?></span>
+                                <span class="checkbox__text"><?= htmlspecialchars($task_item['task_name']);?></span>
                             </label>
                         </td>
 
                         <td class="task__date">
-                            <?= htmlspecialchars($task_item['date_complite']); ?>
+                            <?php  if ($task_item['deadline'] == null) {
+								print '';
+							} else { 
+							print (htmlspecialchars((new DateTime($task_item['deadline']))->format('d.m.Y')));} ?>
                         </td>
 
                         <td class="task__date"></td>
