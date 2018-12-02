@@ -45,10 +45,10 @@
 
                 <nav class="main-navigation">
 					<ul class="main-navigation__list">
-                    <?php foreach (projectMapping($connection) as $projectName): ?>
+                    <?php foreach (projectMapping() as $projectName): ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?= $projectName['project_name']; ?></a>
-                            <span class="main-navigation__list-item-count"><?= taskCount($connection, $projectName['id']); ?></span>
+                            <a class="main-navigation__list-item-link" href="#"><?php if (isset($projectName['project_name'])) { print $projectName['project_name']; } ?></a>
+                            <span class="main-navigation__list-item-count"><?php if (isset($projectName['id'])) { print taskCount($projectName['id']); } ?></span>
                         </li>
 					<?php endforeach; ?>
                     </ul>
