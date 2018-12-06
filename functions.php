@@ -45,7 +45,7 @@ function projectMapping () {
 }
 
 function taskByProjectMapping ($project_id) {
-	$connection = mysqli_connect('localhost', 'root', '', 'dd_template');
+	$connection = mysqli_connect('localhost', 'root', '', 'doingsdone');
 	mysqli_set_charset($connection, 'utf8');
 	
 	$sql = "SELECT * FROM `tasks` WHERE `user_id` = 1 AND `project_id` = " . (int) $project_id;
