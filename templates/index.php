@@ -22,7 +22,7 @@
                 </div>
 
                 <table class="tasks">
-                    <tr class="tasks__item task">
+					<tr class="tasks__item task">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
@@ -63,8 +63,12 @@
                             <?php  if (isset($task_item['deadline']) && $task_item['deadline'] !== null) {	 
 											print ((new DateTime($task_item['deadline']))->format('d.m.Y'));} ?>
                         </td>
+						<td class="task__file">
+							<?php if (!empty($task_item['file_add'])) : ?>
+                            <a class="download-link" href="../<?=  $task_item['file_add'] ?>"><?=  $task_item['file_add'] ?></a>
+							<?php endif ?> 
+                        </td>
 
-                        <td class="task__date"></td>
                     </tr>
 					<?php endforeach; ?>
                     <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->

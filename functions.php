@@ -61,7 +61,7 @@ function taskMapping () {
 	$connection = mysqli_connect('localhost', 'root', '', 'doingsdone');
 	mysqli_set_charset($connection, 'utf8');
 	
-	$sql = "SELECT * FROM `tasks` WHERE `user_id` = 1 ORDER BY `id`ASC";
+	$sql = "SELECT * FROM `tasks` WHERE `user_id` = 1 ORDER BY `id`DESC";
 	$tasks_query = mysqli_query($connection, $sql);
 	$tasks = mysqli_fetch_all($tasks_query, MYSQLI_ASSOC);
 	
@@ -69,5 +69,40 @@ function taskMapping () {
 		return $tasks;
 	}
 }
+
+function db_get_prepare_stmt($link, $sql, $data = []) {
+	$stmt = mysqli_prepare($link, $sql);
+	
+	if ($data) {
+		$types = '';
+		$stmt_data = [];
+		
+		foreach ($data as $value) {
+			$type = null;
+			
+			if (is_int($value)) {
+				$type = 'i';
+			} else if (is_string($value)) {
+				$type = 's';
+			} else if (is_double($value)) {
+				$type = 'd';
+			}
+			
+			if ($type) {
+				$types .= $type;
+				$stmt_data[] = $value;
+			}
+		}
+		
+		$values = array_merge([$stmt, $types], $stmt_data);
+		
+		$func = 'mysqli_stmt_bind_param';
+		$func(...$values);
+		
+	}
+	
+	return $stmt;
+}
+
 
 ?>
