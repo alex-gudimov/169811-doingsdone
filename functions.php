@@ -44,6 +44,19 @@ function projectMapping () {
 	}	
 }
 
+function taskByProjectMapping ($project_id) {
+	$connection = mysqli_connect('localhost', 'root', '', 'doingsdone');
+	mysqli_set_charset($connection, 'utf8');
+	
+	$sql = "SELECT * FROM `tasks` WHERE `user_id` = 1 AND `project_id` = " . (int) $project_id;
+	$tasks_query = mysqli_query($connection, $sql);
+	$tasks = mysqli_fetch_all($tasks_query, MYSQLI_ASSOC);
+
+	if (isset($tasks)) {
+		return $tasks;
+	}
+}
+
 function taskMapping () {
 	$connection = mysqli_connect('localhost', 'root', '', 'doingsdone');
 	mysqli_set_charset($connection, 'utf8');

@@ -36,7 +36,7 @@
 
                         <td class="task__date"></td>
                     </tr>
-					<?php foreach (taskMapping ()  as $task_item): ?>
+					<?php foreach ($tasks  as $task_item): ?>
 					<tr class="tasks__item task <?= ((int)$task_item['status'] === 1) ? 'task--completed' : '';
 
 					date_default_timezone_set("Europe/Moscow");					
